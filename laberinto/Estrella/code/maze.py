@@ -1,7 +1,8 @@
 #mapa de colores 
 import pygame
 import time
-
+from arbol import Nodo, arbol_known
+import arbol
 
 def mapeado(mapeado, row, col, cell_size):
     if col > 0:
@@ -96,8 +97,7 @@ def meta(p1,p2,k1,k2):
     screen.blit(Texto_Exito, (50,50))
 
 # Definimos el tamaño de la ventana
-WINDOW_SIZE = (580, 580)
-
+# WINDOW_SIZE = (580, 580)
 # Definimos los colores
 BLACK = (0, 0, 0) #0
 WHITE = (255, 255, 255)#1
@@ -113,7 +113,7 @@ FINISH = (214,133,160)#10
 
 
 # Leemos el archivo de texto con la matriz de números
-with open("./Teclado/txt/map1.txt", "r") as file:
+with open("./Agente/txt/map1.txt", "r") as file:
     matriz = [list(map(int, line.split())) for line in file]
 n_filas, n_columnas = len(matriz), len(matriz[0])
 
@@ -125,12 +125,20 @@ for i in range(len(playerknown)):
         playerknown[i][j] = 0
 p1 = 1
 p2 = 4
-k1 = 1
-k2 = 2
+k1 = 14
+k2 = 4
 playerlocation[p1][p2] = 7
+playerknown[p1][p2] = 7
 playerknown[k1][k2] = 9
 
+origen = (p1,p2,"none")
+destino = (k1,k2)
 
+raiz = Nodo(origen,playerknown)
+
+arbol_known(raiz,destino,matriz)
+
+"""
 # Inicializamos Pygame
 pygame.init()
 # Creamos la ventana
@@ -140,6 +148,7 @@ pygame.display.set_caption("Laberinto")
 
 recargar(playerknown,matriz,playerlocation)
 time.sleep(.5)
+
 
 #CONTROLAR ELEMENTO POR TECLADO.
 while True:
@@ -190,8 +199,6 @@ while True:
     
     if p1 == k1 and p2 == k2:
         meta(p1,p2,k1,k2)
-        pygame.display.update()
-        input("...")
 
     pygame.display.update()
-
+"""
