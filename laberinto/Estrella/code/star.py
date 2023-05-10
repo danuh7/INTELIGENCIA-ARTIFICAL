@@ -2,7 +2,7 @@ import heapq
 import maze
 
 # Definir los movimientos permitidos (arriba, abajo, izquierda, derecha y diagonales)
-MOVIMIENTOS = [(0, 1), (0, -1), (1, 0), (-1, 0), (1, 1), (1, -1), (-1, 1), (-1, -1)]
+MOVIMIENTOS = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
 def calcular_costo(punto_actual, punto_final, cost):
     """
