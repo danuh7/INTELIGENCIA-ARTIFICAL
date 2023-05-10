@@ -1,6 +1,7 @@
 #mapa de colores 
 import pygame
 import time
+from star import encontrar_ruta
 import star
 
 def mapeado(mapeado, row, col, cell_size):
@@ -51,20 +52,17 @@ def recolor(playerknown,row,col,cell_size):
     if   playerknown[row][col] == 0:
             pygame.draw.rect(screen, BLACK, (x, y, cell_size, cell_size))
     elif playerknown[row][col] == 1:
-            pygame.draw.rect(screen, WHITE, (x, y, cell_size, cell_size))
+            pygame.draw.rect(screen, BROWN, (x, y, cell_size, cell_size))
     elif playerknown[row][col] == 2:
-            pygame.draw.rect(screen, GRAY, (x, y, cell_size, cell_size))
+            pygame.draw.rect(screen, BLUE, (x, y, cell_size, cell_size))
     elif playerknown[row][col] == 3:
             pygame.draw.rect(screen, LAND, (x, y, cell_size, cell_size))
     elif playerknown[row][col] == 4:
-            pygame.draw.rect(screen, BLUE, (x, y, cell_size, cell_size))
+            pygame.draw.rect(screen, GREEN, (x, y, cell_size, cell_size))
+
     elif playerknown[row][col] == 5:
             pygame.draw.rect(screen, YELLOW, (x, y, cell_size, cell_size))
     elif playerknown[row][col] == 6:
-            pygame.draw.rect(screen, GREEN, (x, y, cell_size, cell_size))
-    elif playerknown[row][col] == 8:
-            pygame.draw.rect(screen, KNOWN, (x, y, cell_size, cell_size))
-    elif playerknown[row][col] == 9:
             pygame.draw.rect(screen, GOAL, (x, y, cell_size, cell_size))
     elif playerknown[row][col] == 10:
             pygame.draw.rect(screen, FINISH, (x, y, cell_size, cell_size))
@@ -96,30 +94,33 @@ def meta(p1,p2,k1,k2):
     screen.blit(Texto_Exito, (50,50))
 
 class Agente:
-     def __init__(self) -> None:
-          self.tipo
-          self.posicion
+     def __init__(self,tipo,posicion) -> None:
+          self.tipo = tipo
+          self.posicion = posicion
           
 # Definimos el tamaño de la ventana
 # WINDOW_SIZE = (580, 580)
 # Definimos los colores
 
-BLACK = (0, 0, 0) #0
-WHITE = (255, 255, 255)#1
-GRAY = (96, 96, 96)#2
-LAND = (255, 229, 209)#3
-BLUE = (51, 153, 255)#4
-YELLOW = (255, 153, 51)#5
-GREEN = (0, 153, 0)#6
-PLAYER = (220,20,60)#7
+BLACK = (0, 0, 0) #0 montaña
+BROWN = (185, 119, 14)#1 EARTH
+BLUE = (51, 153, 255)#2 WATER
+LAND = (255, 229, 209)#3 SAND
+GREEN = (0, 153, 0)#4 FOREST
+
+YELLOW = (255, 153, 51)#5 Recorrido
+GOAL = (198,83,98)#6
+PLAYER = (220,20,60)#7 humano
+OCTOPUS = (108, 52, 131)#8 PULPO
 KNOWN = (18,8,23)#8
-GOAL = (198,83,98)#9
+
 FINISH = (214,133,160)#10
 
-
+Humano = Agente(0,(1,4))
+Pulpo = Agente(1, (5,6))
 
 # Leemos el archivo de texto con la matriz de números
-with open("./Agente/txt/map1.txt", "r") as file:
+with open("./map1.txt", "r") as file:
     matriz = [list(map(int, line.split())) for line in file]
 n_filas, n_columnas = len(matriz), len(matriz[0])
 
@@ -140,9 +141,8 @@ playerknown[k1][k2] = 9
 origen = (p1,p2,"none")
 destino = (k1,k2)
 
-raiz = Nodo(origen,playerknown)
 
-arbol_known(raiz,destino,matriz)
+encontrar_ruta(matriz,Humano,destino)
 
 """
 # Inicializamos Pygame

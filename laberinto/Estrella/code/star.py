@@ -1,5 +1,5 @@
 import heapq
-import maze
+
 
 # Definir los movimientos permitidos (arriba, abajo, izquierda, derecha y diagonales)
 MOVIMIENTOS = [(0, 1), (0, -1), (1, 0), (-1, 0)]
@@ -19,7 +19,10 @@ def calcular_costo(punto_actual, punto_final, cost):
     x2, y2 = punto_final
     return abs(x1 - x2) + abs(y1 - y2)
 
-def encontrar_ruta(mapa, tipo_agente, punto_inicial, punto_final, cost):
+def encontrar_ruta(mapa,agente,punto_final):
+    tipo_agente=agente.tipo
+    punto_inicial=agente.posicion
+
     """
     Encuentra la ruta con el menor costo utilizando el algoritmo A*.
     El mapa es una lista que indica el tipo de agente en cada casilla.
