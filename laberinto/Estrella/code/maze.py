@@ -143,6 +143,10 @@ destino = (k1,k2)
 
 
 encontrar_ruta(matriz,Humano,destino)
+ruta,costo = encontrar_ruta(matriz,Humano,destino)
+print("Ruta encontrada:")
+for punto in ruta:
+    print(punto)
 
 """
 # Inicializamos Pygame

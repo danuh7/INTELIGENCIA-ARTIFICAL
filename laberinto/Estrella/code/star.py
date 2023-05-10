@@ -58,7 +58,7 @@ def encontrar_ruta(mapa,agente,punto_final):
                 ruta.append(punto_actual)
                 punto_actual = ruta_anterior[punto_actual[0]][punto_actual[1]]
             ruta.reverse()
-            return ruta
+            return ruta,costo_total
     
         for movimiento in MOVIMIENTOS:
             dx, dy = movimiento
