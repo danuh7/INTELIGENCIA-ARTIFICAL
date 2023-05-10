@@ -120,7 +120,7 @@ Humano = Agente(0,(1,4))
 Pulpo = Agente(1, (5,6))
 
 # Leemos el archivo de texto con la matriz de números
-with open("./map1.txt", "r") as file:
+with open("map2.txt", "r") as file:
     matriz = [list(map(int, line.split())) for line in file]
 n_filas, n_columnas = len(matriz), len(matriz[0])
 
