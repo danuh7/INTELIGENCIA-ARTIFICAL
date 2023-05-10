@@ -5,6 +5,7 @@ import maze
 MOVIMIENTOS = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
 cost = [
+    #0 
      [0,1,2,3,4], #AGENTE HUMANO 0
      [0,4,1,0,3], #AGENTE PULP 1
 ]
