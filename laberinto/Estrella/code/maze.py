@@ -1,8 +1,7 @@
 #mapa de colores 
 import pygame
 import time
-from arbol import Nodo, arbol_known
-import arbol
+import star
 
 def mapeado(mapeado, row, col, cell_size):
     if col > 0:
@@ -96,9 +95,15 @@ def meta(p1,p2,k1,k2):
     Texto_Exito= pygame.font.SysFont("Arial",25).render("ha llegado a la meta",True,(91,186,200))
     screen.blit(Texto_Exito, (50,50))
 
+class Agente:
+     def __init__(self) -> None:
+          self.tipo
+          self.posicion
+          
 # Definimos el tamaño de la ventana
 # WINDOW_SIZE = (580, 580)
 # Definimos los colores
+
 BLACK = (0, 0, 0) #0
 WHITE = (255, 255, 255)#1
 GRAY = (96, 96, 96)#2
@@ -111,6 +116,10 @@ KNOWN = (18,8,23)#8
 GOAL = (198,83,98)#9
 FINISH = (214,133,160)#10
 
+cost = [
+     [0,1,2,3,4],
+     [0,4,1,0,3],
+]
 
 # Leemos el archivo de texto con la matriz de números
 with open("./Agente/txt/map1.txt", "r") as file:
