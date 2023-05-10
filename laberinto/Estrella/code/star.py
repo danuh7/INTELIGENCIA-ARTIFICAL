@@ -4,6 +4,11 @@ import maze
 # Definir los movimientos permitidos (arriba, abajo, izquierda, derecha y diagonales)
 MOVIMIENTOS = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
+cost = [
+     [0,1,2,3,4], #AGENTE HUMANO 0
+     [0,4,1,0,3], #AGENTE PULP 1
+]
+
 def calcular_costo(punto_actual, punto_final, cost):
     """
     Calcula el costo heurístico entre dos puntos.
@@ -13,7 +18,7 @@ def calcular_costo(punto_actual, punto_final, cost):
     x2, y2 = punto_final
     return abs(x1 - x2) + abs(y1 - y2)
 
-def encontrar_ruta(mapa, punto_inicial, punto_final, cost):
+def encontrar_ruta(mapa, tipo_agente, punto_inicial, punto_final, cost):
     """
     Encuentra la ruta con el menor costo utilizando el algoritmo A*.
     El mapa es una lista que indica el tipo de agente en cada casilla.
@@ -60,8 +65,7 @@ def encontrar_ruta(mapa, punto_inicial, punto_final, cost):
             if nuevo_x < 0 or nuevo_x >= filas or nuevo_y < 0 or nuevo_y >= columnas:
                 continue
             
-            tipo_agente = mapa[nuevo_x][nuevo_y]
-            costo = cost[tipo_agente][movimiento]
+            costo = cost[tipo_agente][mapa[nuevo_x][nuevo_y]]
     
             # Verificar si el costo asociado al nuevo tipo de agente y movimiento es válido (diferente de 0)
             # y si el costo acumulado es menor al costo acumulado previo para el nuevo punto

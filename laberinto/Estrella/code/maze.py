@@ -116,10 +116,7 @@ KNOWN = (18,8,23)#8
 GOAL = (198,83,98)#9
 FINISH = (214,133,160)#10
 
-cost = [
-     [0,1,2,3,4],
-     [0,4,1,0,3],
-]
+
 
 # Leemos el archivo de texto con la matriz de números
 with open("./Agente/txt/map1.txt", "r") as file:
