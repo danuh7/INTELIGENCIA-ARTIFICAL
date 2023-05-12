@@ -113,7 +113,7 @@ FINISH = (214,133,160)#10
 
 
 # Leemos el archivo de texto con la matriz de números
-with open("./Teclado/txt/map1.txt", "r") as file:
+with open("Teclado/txt/map2.txt", "r") as file:
     matriz = [list(map(int, line.split())) for line in file]
 n_filas, n_columnas = len(matriz), len(matriz[0])
 
