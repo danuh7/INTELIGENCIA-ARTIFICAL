@@ -148,6 +148,8 @@ print("Ruta encontrada:")
 for punto in ruta:
     print(punto)
 
+
+
 """
 # Inicializamos Pygame
 pygame.init()
